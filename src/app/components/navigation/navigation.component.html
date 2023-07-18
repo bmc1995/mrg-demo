@@ -1,0 +1,14 @@
+<div class="navbar">
+  <div class="navbar__brand">
+    <span>Flight Things</span>
+  </div>
+  <div class="navbar__links">
+    <div *ngIf="loggedIn; then logIn; else logOut"></div>
+    <ng-template #logIn>
+      <a class="navbar__link" (click)="logout()">Logout</a>
+    </ng-template>
+    <ng-template #logOut>
+      <a class="navbar__link" (click)="login()">Login</a>
+    </ng-template>
+  </div>
+</div>

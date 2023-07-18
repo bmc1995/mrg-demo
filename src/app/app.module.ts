@@ -10,11 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from '@environment';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 const { auth0 } = environment;
 
 @NgModule({
-  declarations: [AppComponent, ReservationComponent, LoginComponent],
+  declarations: [AppComponent, ReservationComponent, LoginComponent, NavigationComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
