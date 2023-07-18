@@ -1,1 +1,100 @@
-<p>reservation works!</p>
+<ngb-toast
+  (hidden)="toggleToast()"
+  *ngIf="showToast"
+  #toast
+  [ngClass]="toastClass"
+  [autohide]="true"
+  >{{ toastMessage }}
+</ngb-toast>
+<div *ngIf="isLoggedIn" class="container">
+  <h1 class="container__h1">Flight Lookup</h1>
+  <form class="form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <div class="form__control">
+      <label class="form__label" for="airline">Airline</label>
+      <input
+        class="form__input"
+        type="text"
+        id="airline"
+        formControlName="airline"
+      />
+    </div>
+    <div class="form__control">
+      <label class="form__label" for="flightNumber">Flight Number</label>
+      <input
+        class="form__input"
+        type="text"
+        id="flightNumber"
+        formControlName="flightNumber"
+      />
+    </div>
+    <div class="form__control">
+      <label class="form__label" for="arrivalDate">Arrival Date</label>
+      <input
+        class="form__input form__input--date"
+        type="date"
+        id="arrivalDate"
+        formControlName="arrivalDate"
+      />
+    </div>
+    <div class="form__control">
+      <label class="form__label" for="arrivalTime">Arrival Time</label>
+      <input
+        class="form__input form__input--time"
+        type="time"
+        id="arrivalTime"
+        formControlName="arrivalTime"
+      />
+    </div>
+    <div class="form__control">
+      <label for="numOfGuests">Number Of Guests</label>
+      <input
+        class="form__input"
+        type="number"
+        id="numOfGuests"
+        formControlName="numOfGuests"
+      />
+    </div>
+    <div class="form__control">
+      <label class="form__label" for="comments">Comments?</label>
+      <textarea
+        class="form__textarea"
+        id="comments"
+        formControlName="comments"
+      ></textarea>
+    </div>
+    <button
+      class="form__button form__button--submit"
+      type="submit"
+      [disabled]="!reservationForm.valid"
+    >
+      Find My Flight
+    </button>
+  </form>
+</div>
+<div *ngIf="!isLoggedIn" class="container">
+  <h1 class="container__h1">Login</h1>
+  <!-- <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form__control">
+        <label class="form__label" for="username">Username</label>
+        <input
+          class="form__input"
+          type="text"
+          id="username"
+          formControlName="username"
+        />
+      </div>
+      <div class="form__control">
+        <label class="form__label" for="password">Password</label>
+        <input
+          class="form__input"
+          type="password"
+          id="password"
+          formControlName="password"
+        />
+      </div> -->
+  <!-- <button class="form__button" type="submit" [disabled]="!loginForm.valid"> -->
+  <button class="form__button" (click)="auth.loginWithRedirect()">
+    Log in
+  </button>
+  <!-- </form> -->
+</div>
