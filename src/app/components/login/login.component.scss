@@ -1,0 +1,54 @@
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ccc;
+
+  &__h1 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__control {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  &__button {
+    width: 15rem;
+    padding: 10px;
+    margin-top: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #0de406b2;
+  }
+
+  &__button:hover {
+    cursor: pointer;
+    background-color: #0ee406;
+  }
+
+  &__button:disabled {
+    background-color: #ccc;
+  }
+}
