@@ -19,8 +19,8 @@ export class ReservationComponent {
   AuthSubscription!: Subscription;
   isLoggedIn: boolean = false;
   showToast: boolean = false;
-  toastClass: string = '';
-  toastMessage: string = '';
+  toastClass: string = 'bg-success text-light z-index-1';
+  toastMessage: string = 'Success!';
 
   reservationForm = new FormGroup({
     airline: new FormControl('', [Validators.required]),
@@ -82,8 +82,11 @@ export class ReservationComponent {
         if (data) {
           this.toastClass = 'bg-success text-light z-index-1';
           this.toastMessage = 'Success!';
-          this.toggleToast();
+          return this.toggleToast();
         }
+        this.toastClass = 'bg-danger text-light z-index-1';
+        this.toastMessage = 'Not found!';
+        this.toggleToast();
       });
 
     this.reservationForm.reset();

@@ -1,12 +1,12 @@
-<ngb-toast
-  (hidden)="toggleToast()"
-  *ngIf="showToast"
-  #toast
-  [ngClass]="toastClass"
-  [autohide]="true"
-  >{{ toastMessage }}
-</ngb-toast>
 <div *ngIf="isLoggedIn" class="container">
+  <ngb-toast
+    (hidden)="toggleToast()"
+    *ngIf="showToast"
+    #toast
+    [ngClass]="toastClass"
+    [autohide]="true"
+    >{{ toastMessage }}
+  </ngb-toast>
   <h1 class="container__h1">Flight Lookup</h1>
   <form class="form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
     <div class="form__control">
