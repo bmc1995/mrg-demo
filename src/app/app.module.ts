@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
@@ -15,7 +14,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 const { auth0 } = environment;
 
 @NgModule({
-  declarations: [AppComponent, ReservationComponent, LoginComponent, NavigationComponent],
+  declarations: [AppComponent, ReservationComponent, NavigationComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
