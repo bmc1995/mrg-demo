@@ -1,7 +1,10 @@
-<div *ngIf="isLoggedIn" class="container">
+<div
+  *ngIf="!(isAuthenticating$ | async) && (isAuthenticated$ | async)"
+  class="container"
+>
   <ngb-toast
     (hidden)="toggleToast()"
-    *ngIf="showToast"
+    *ngIf="showToast$ | async"
     #toast
     [ngClass]="toastClass"
     [autohide]="true"
@@ -67,34 +70,21 @@
       type="submit"
       [disabled]="!reservationForm.valid"
     >
-      Find My Flight
+      <div *ngIf="isLoading$ | async" class="prop">
+        <div class="blade blade-1"></div>
+        <div class="blade blade-2"></div>
+        <div class="blade blade-3"></div>
+        <div class="blade blade-4"></div>
+        <div class="middle"></div>
+      </div>
+      <span *ngIf="!(isLoading$ | async)">Find My Flight</span>
     </button>
   </form>
 </div>
-<div *ngIf="!isLoggedIn" class="container">
-  <h1 class="container__h1">Login</h1>
-  <!-- <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form__control">
-        <label class="form__label" for="username">Username</label>
-        <input
-          class="form__input"
-          type="text"
-          id="username"
-          formControlName="username"
-        />
-      </div>
-      <div class="form__control">
-        <label class="form__label" for="password">Password</label>
-        <input
-          class="form__input"
-          type="password"
-          id="password"
-          formControlName="password"
-        />
-      </div> -->
-  <!-- <button class="form__button" type="submit" [disabled]="!loginForm.valid"> -->
-  <button class="form__button" (click)="auth.loginWithRedirect()">
-    Log in
-  </button>
-  <!-- </form> -->
+<div
+  *ngIf="!(isAuthenticated$ | async) && !(isAuthenticating$ | async)"
+  class="container container--flex"
+>
+  <h2 class="container__h1">Logged Out</h2>
+  <p>Please login to see your flight information.</p>
 </div>

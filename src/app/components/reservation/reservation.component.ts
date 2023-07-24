@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from '@environment';
 import { AuthService } from '@auth0/auth0-angular';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 const { fiAPI, fiToken } = environment;
 
@@ -13,14 +13,24 @@ const { fiAPI, fiToken } = environment;
   styleUrls: ['./reservation.component.scss'],
 })
 export class ReservationComponent {
+  private _toastSubject: BehaviorSubject<boolean>;
+  private _loadingSubject: BehaviorSubject<boolean>;
+  showToast$: Observable<boolean>;
+  isLoading$!: Observable<boolean>;
+
+  toastClass!: string;
+  toastMessage!: string;
+
   constructor(private httpClient: HttpClient, public auth: AuthService) {
-    console.log('ReservationComponent constructor');
+    this._loadingSubject = new BehaviorSubject<boolean>(false);
+    this._toastSubject = new BehaviorSubject<boolean>(false);
+
+    this.isLoading$ = this._loadingSubject.asObservable();
+    this.showToast$ = this._toastSubject.asObservable();
   }
-  AuthSubscription!: Subscription;
-  isLoggedIn: boolean = false;
-  showToast: boolean = false;
-  toastClass: string = 'bg-success text-light z-index-1';
-  toastMessage: string = 'Success!';
+
+  isAuthenticating$ = this.auth.isLoading$;
+  isAuthenticated$ = this.auth.isAuthenticated$;
 
   reservationForm = new FormGroup({
     airline: new FormControl('', [Validators.required]),
@@ -56,6 +66,7 @@ export class ReservationComponent {
   }
 
   onSubmit(): void {
+    this._loadingSubject.next(true);
     console.log('ReservationComponent: onSubmit()');
     console.log(this.reservationForm.value);
 
@@ -82,25 +93,18 @@ export class ReservationComponent {
         if (data) {
           this.toastClass = 'bg-success text-light z-index-1';
           this.toastMessage = 'Success!';
-          return this.toggleToast();
+        } else {
+          this.toastClass = 'bg-danger text-light z-index-1';
+          this.toastMessage = 'Not found!';
         }
-        this.toastClass = 'bg-danger text-light z-index-1';
-        this.toastMessage = 'Not found!';
+        this._loadingSubject.next(false);
         this.toggleToast();
+        this.reservationForm.reset();
       });
-
-    this.reservationForm.reset();
   }
 
   toggleToast() {
-    this.showToast = !this.showToast;
-  }
-
-  ngOnInit(): void {
-    console.log('ReservationComponent initialized');
-    this.AuthSubscription = this.auth.isAuthenticated$.subscribe((data) => {
-      this.isLoggedIn = data;
-    });
+    this._toastSubject.next(!this._toastSubject.value);
   }
 
   ngOnDestroy(): void {
