@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { ThemeService } from '@services/theme.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent implements OnInit {
-  constructor(private auth: AuthService) {}
+export class NavigationComponent {
+  constructor(private auth: AuthService, private themeService: ThemeService) {}
+  isDarkMode$ = this.themeService.isDarkMode$;
+  isAuthenticating$ = this.auth.isLoading$;
+  isAuthenticated$ = this.auth.isAuthenticated$;
 
-  loggedIn!: boolean;
-
-  ngOnInit(): void {
-    this.auth.isAuthenticated$.subscribe((data) => {
-      this.loggedIn = data;
-    });
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 
   login(): void {
