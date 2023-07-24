@@ -1,4 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+// $mrg-green: #4c8340ff;
+/* Importing variables for light and dark theme. */
+@use "src/styling/variables" as light;
+@use "src/styling/variables-dark" as dark;
+@import "bootstrap/scss/bootstrap";
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+:root {
+  --background: #{light.$background};
+  --text-color: #{light.$text-color};
+  --card-background: #{light.$card-background};
+  --chip-background: #{light.$chip-background};
+  --button-background: #{light.$button-background};
+  --button-disabled-bg: #{light.$button-disabled-bg};
+  --button-active-bg: #{light.$button-active-bg};
+  --button-active-color: #{light.$button-active-color};
+  --button-text-color: #{light.$button-text-color};
+  --dropdown-background: #{light.$dropdown-background};
+  --navbar-background: #{light.$navbar-background};
+  --navbar-brand: #{light.$navbar-brand};
+  --dialog-background: #{light.$dialog-background};
+  --modal-background: #{light.$modal-background};
+  --primary: #{light.$primary};
+  --secondary: #{light.$secondary};
+  --success: #{light.$success};
+  --info: #{light.$info};
+  --warning: #{light.$warning};
+  --danger: #{light.$danger};
+  --light: #{light.$light};
+  --dark: #{light.$dark};
+  --bg-text-color: #{light.$bg-text-color};
+  --webkit-border: #{light.$webkit-border};
+  --webkit-text-fill-color: #{light.$text-color};
+  --webkit-box-shadow: #{light.$webkit-box-shadow};
+  --webkit-transition: #{light.$webkit-transition};
+
+  body {
+    background-color: var(--background);
+    color: var(--text-color);
+  }
+}
+
+:root.dark-mode {
+  --background: #{dark.$background};
+  --text-color: #{dark.$text-color};
+  --card-background: #{dark.$card-background};
+  --chip-background: #{dark.$chip-background};
+  --button-background: #{dark.$button-background};
+  --button-disabled-bg: #{dark.$button-disabled-bg};
+  --button-active-bg: #{dark.$button-active-bg};
+  --button-active-color: #{dark.$button-active-color};
+  --button-text-color: #{dark.$button-text-color};
+  --dropdown-background: #{dark.$dropdown-background};
+  --navbar-background: #{dark.$navbar-background};
+  --navbar-brand: #{dark.$navbar-brand};
+  --dialog-background: #{dark.$dialog-background};
+  --modal-background: #{dark.$modal-background};
+  --primary: #{dark.$primary};
+  --secondary: #{dark.$secondary};
+  --success: #{dark.$success};
+  --info: #{dark.$info};
+  --warning: #{dark.$warning};
+  --danger: #{dark.$danger};
+  --light: #{dark.$light};
+  --dark: #{dark.$dark};
+  --bg-text-color: #{dark.$bg-text-color};
+  --webkit-border: #{dark.$webkit-border};
+  --webkit-text-fill-color: #{dark.$text-color};
+  --webkit-box-shadow: #{dark.$webkit-box-shadow};
+  --webkit-transition: #{dark.$webkit-transition};
+
+  background-color: var(--background);
+  body {
+    background-color: var(--background);
+    color: var(--text-color);
+  }
+}

@@ -1,0 +1,68 @@
+$mrg-green: #4c8340ff;
+$ash-gray: #b1c1c0ff;
+$tea-green: hsl(80, 59%, 89%);
+$tea-green-2: hsl(77, 61%, 95%);
+$ultra-violet: #774083;
+
+/** DARK THEME PRIMARY COLORS */
+$primary-100: #4c8340;
+$primary-200: #609054;
+$primary-300: #749e68;
+$primary-400: #87ab7c;
+$primary-500: #9bb991;
+$primary-600: #aec7a6;
+/** DARK THEME SURFACE COLORS */
+$surface-100: #000000;
+$surface-200: #1e1e1e;
+$surface-300: #353535;
+$surface-400: #4e4e4e;
+$surface-500: #696969;
+$surface-600: #858585;
+/** DARK THEME MIXED SURFACE COLORS */
+$surface-mixed-100: #0d120b;
+$surface-mixed-200: #242823;
+$surface-mixed-300: #3b3f3a;
+$surface-mixed-400: #545753;
+$surface-mixed-500: #6e716d;
+$surface-mixed-600: #898b89;
+
+/// For use in the :root selector ///
+////////////////////////////////////
+$primary: $primary-100;
+$secondary: $ultra-violet;
+$success: #7fa674;
+$info: #17a2b8;
+$warning: #ffc107ff;
+$danger: #dc3545ff;
+
+$light: $tea-green;
+$light-subtle: $tea-green-2;
+$dark: #343a40ff;
+
+$text-color: $tea-green;
+$bg-text-color: $surface-mixed-600;
+$background: $surface-100;
+$card-background: $surface-mixed-200;
+$chip-background: $surface-mixed-300;
+$dropdown-background: $surface-mixed-300;
+
+/// BUTTONS ///
+$button-background: $primary-100;
+$button-disabled-bg: $surface-mixed-100;
+$button-active-bg: $surface-mixed-200;
+$button-active-color: $light-subtle;
+$button-text-color: $light;
+
+/// NAVBAR ///
+$navbar-background: $surface-mixed-400;
+$navbar-brand: $primary-600;
+
+/// DIALOG ///
+$dialog-background: $surface-mixed-400;
+$modal-background: $surface-mixed-400;
+
+/// AUTOFILL ///
+$webkit-text-fill-color: $tea-green;
+$webkit-border: 1px solid $ultra-violet;
+$webkit-box-shadow: 0 0 0px 1000px $chip-background inset;
+$webkit-transition: background-color 5000s ease-in-out 0s;
